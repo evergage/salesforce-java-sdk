@@ -74,17 +74,20 @@ public class TokenRetrievalServiceImpl implements TokenRetrievalService {
         }
         
         BufferedReader reader = null;
-        String responsePayload = null;
+        StringBuilder responsePayload = new StringBuilder();
         try {
             reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            responsePayload = reader.readLine();
+            String line;
+            while (null != (line = reader.readLine())) {
+                responsePayload.append(line).append("\n");
+            }
         } catch (IOException e) {
             throwDetailedException(conn, e);
         } finally {
             if (reader != null) reader.close();
         }
         
-        return responsePayload;
+        return responsePayload.toString();
         
     }
 
