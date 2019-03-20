@@ -75,7 +75,7 @@ public enum ForceConnectionProperty {
     /**
      * The OAuth secret to be used in a Force.com OAuth handshake.
      */
-    OAUTH_SECRET("oauth_secret", Pattern.compile("(\\d+)")),
+    OAUTH_SECRET("oauth_secret", Pattern.compile("(\\w+)")),
     /**
      * The API client id to be used in a Force.com connection.
      */
