@@ -6,7 +6,7 @@
     <version>7</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.force.sdk</groupId>
+  <groupId>com.evergage.thirdparty.force</groupId>
   <artifactId>force-sdk</artifactId>
   <name>force-sdk</name>
   <version>22.0.10-evg</version>
@@ -103,12 +103,8 @@
   </properties>
 
   <modules>
-    <module>build-tools</module>
     <module>connector</module>
-    <module>jpa</module>
-    <module>codegen</module>
     <module>oauth</module>
-    <module>springsecurity</module>
   </modules>
 
   <distributionManagement>
@@ -322,41 +318,6 @@
 
     <pluginManagement>
       <plugins>
-
-        <plugin>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>check-api-sdk-versions</id>
-              <phase>initialize</phase>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-
-              <!--
-              Ensure that the API and SDK versions have the proper
-              Force.com version boundaries.
-              -->
-              <configuration>
-                <rules>
-                  <requireProperty>
-                    <property>force.api.version</property>
-                    <regex>^\[${force.version.min}.0, ${force.version.max}.0\)$</regex>
-                    <regexMessage>
-                      {force.api.version} be in the form [${force.version.min}.0, ${force.version.max}.0)
-                    </regexMessage>
-                  </requireProperty>
-                  <requireProperty>
-                    <property>force.sdk.version</property>
-                    <regex>^(${force.version.min}).(\d+)(-SNAPSHOT|-BETA|-evg)*$</regex>
-                    <regexMessage>{force.sdk.version} be in the form ${force.version.min}.d[-SNAPSHOT]</regexMessage>
-                  </requireProperty>
-                </rules>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <configuration>
