@@ -16,6 +16,18 @@
     <plugins>
     
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <environmentVariables>
+            <FORCE_ENVVARCONN_URL>
+              force://url?user=user&amp;password=password
+            </FORCE_ENVVARCONN_URL>
+          </environmentVariables>
+        </configuration>
+      </plugin>
+
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
         <configuration>
